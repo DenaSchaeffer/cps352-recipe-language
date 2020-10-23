@@ -13,7 +13,7 @@ Instructor: Dr. Phu Phung
 # Team Members
 
 1. Dena Schaeffer, <backd1@udayton.edu>
-2. 
+2. Quan Nguyen, <nguyenq2@udayton.edu>
 
 ### What is this repository for? ###
 - This repo stores the information and code for the CPS352 final project.
