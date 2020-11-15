@@ -51,9 +51,9 @@ The following explains the correlations between the language we developed and th
 
 ## Programming in your language
 ### Simple program
-1. (cut 1 (fry 2 3))
-2. cook fish using 20 & cook egg using 5 with (fry fish egg)
-3. taste 1 yummy 5 bummy 0
+1. `(cut 1 (fry 2 3))`
+2. `cook fish using 20 & cook egg using 5 with (fry fish egg)`
+3. `taste 1 yummy 5 bummy 0`
 
 ### Program with function definition
 
