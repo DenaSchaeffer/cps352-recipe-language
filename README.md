@@ -33,7 +33,7 @@ Instructor: Dr. Phu Phung
 <action>        ::= "fry" | "cut" | "combine" | "split" | "more" | "less" | "ferment"  
 <grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number>
 <number>        ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-<name>          ::= [A-Za-z]*
+<name>          ::= [A-Za-z][A-Za-z0-9]*
 ```
 ## Language Description
 The following explains the correlations between the language we developed and the basic syntax.
@@ -45,7 +45,8 @@ The following explains the correlations between the language we developed and th
 * Action = operator
 * Cook, using, and with are similar to the let expression for local binding. 
 * Taste, yummy, and bummy is used for conditional evaluation (if, then, else respectively)
-* Recipe and contains act as functions
+* Recipe acts as a function
+* Prepare is used to call a recipe (function)
 * Number = integer 
 
 ## Programming in your language
@@ -57,14 +58,14 @@ The following explains the correlations between the language we developed and th
 ### Program with function definition
 
 ```
-cook noodles using 30 & chicken using 2 with //bind two identifiers with two numbers
-	cook soup using recipe noodles & chicken { //two arguments in the function
+	cook soup using recipe ingredient1 & ingredient2 { //two arguments in the function
 		taste //cond
-			fry noodles chicken				
+			more ingredient1 ingredient2				
 		yummy //true
-			noodles
+			ingredient1
 		bummy //false
-			chicken
+			ingredient2
 	} with 
-	cook meal using prepare soup contains noodles & chicken with (combine soup 5)
+		cook noodles using 30 & chicken using 2 with //bind two identifiers with two numbers 
+			cook meal using prepare soup contains noodles & chicken with (combine soup 5)
 ```
