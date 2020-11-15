@@ -17,3 +17,20 @@ Instructor: Dr. Phu Phung
 
 ### What is this repository for? ###
 - This repo stores the information and code for the CPS352 final project.
+
+# Language Design
+## The language: Syntax and semantic
+```{bnf}
+<program> ::= <expr>
+<expr> 	::= <number>
+		::= <identifier>
+		::= (<operation> <expr> <expr>)
+		::= let {<identifier> = <expr> }^+(,) in <expr>
+		::= if <expr> then <expr> else <expr>
+		::= function(<identifier>) { <expr> }
+<operation> ::= + | - | * | / | ^
+<number> ::= <integer> | -<integer> | <integer>.<integer> | -<integer>.<integer>
+<integer> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+```
+
+## Programming in your language
