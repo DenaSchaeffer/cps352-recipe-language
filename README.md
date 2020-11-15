@@ -25,10 +25,10 @@ Instructor: Dr. Phu Phung
 <ingredient> 	::= <grams>
 		        ::= <name>
 		        ::= (<action> <ingredient> <ingredient>)
-		        ::= cook {<name> using <ingredient> }^+(&) with <ingredient>
+		        ::= cook {<name> using <ingredient>}^+(&) with <ingredient>
 		        ::= taste <ingredient> yummy <ingredient> bummy <ingredient>
 		        ::= recipe <name> contains <ingredient> 
-<action>        ::= + | - | * | / | ^
+<action>        ::= "fry" | "cut" | "combine" | "split" | "ferment"  ; fry + | cut - | combine * | split / | ferment ^
 <grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number>
 <number>        ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 <name>          ::= [A-Za-z]*
@@ -47,3 +47,7 @@ The following explains the correlations between the language we developed and th
 * Number = integer 
 
 ## Programming in your language
+### Simple program
+1. (cut 1 (fry 2 3))
+2. cook fish using 20 & cook egg using 5 with (fry fish egg)
+3. taste 1 yummy 5 bummy 0
