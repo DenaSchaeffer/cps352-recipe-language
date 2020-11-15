@@ -36,13 +36,13 @@ Instructor: Dr. Phu Phung
 <name>          ::= [A-Za-z][A-Za-z0-9]*
 ```
 ## Language Description
-The following explains the correlations between the language we developed and the basic syntax.
+The following explains the correlations between the language we developed and the basic syntax. We wanted to mimic our language like a recipe book, where variables act as ingredients and functions act as what you do with the ingredients.
 
 * Rice = program
 * Ingredient = expression
-* Grams = number
-* Name = identifier
-* Action = operator
+* Grams = a number
+* Name = identifier that begins with a letter and can be followed by letters or numbers
+* Action = operator (+, -, *, ^, /, >, <)
 * Cook, using, and with are similar to the let expression for local binding. 
 * Taste, yummy, and bummy is used for conditional evaluation (if, then, else respectively)
 * Recipe acts as a function
