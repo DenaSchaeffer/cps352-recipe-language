@@ -19,18 +19,31 @@ Instructor: Dr. Phu Phung
 - This repo stores the information and code for the CPS352 final project.
 
 # Language Design
-## The language: Syntax and semantic
+## The language: Syntax and Semantics
 ```{bnf}
-<program> ::= <expr>
-<expr> 	::= <number>
-		::= <identifier>
-		::= (<operation> <expr> <expr>)
-		::= let {<identifier> = <expr> }^+(,) in <expr>
-		::= if <expr> then <expr> else <expr>
-		::= function(<identifier>) { <expr> }
-<operation> ::= + | - | * | / | ^
-<number> ::= <integer> | -<integer> | <integer>.<integer> | -<integer>.<integer>
-<integer> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<rice>          ::= <ingredient>
+<ingredient> 	::= <grams>
+		        ::= <name>
+		        ::= (<action> <ingredient> <ingredient>)
+		        ::= cook {<name> using <ingredient> }^+(&) with <ingredient>
+		        ::= taste <ingredient> yummy <ingredient> bummy <ingredient>
+		        ::= recipe <name> contains <ingredient> 
+<action>        ::= + | - | * | / | ^
+<grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number>
+<number>        ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<name>          ::= [A-Za-z]*
 ```
+## Language Description
+The following explains the correlations between the language we developed and the basic syntax.
+
+* Rice = program
+* Ingredient = expression
+* Grams = number
+* Name = identifier
+* Action = operator
+* Cook, using, and with are similar to the let expression for local binding. 
+* Taste, yummy, and bummy is used for conditional evaluation (if, then, else respectively)
+* Recipe and contains act as functions
+* Number = integer 
 
 ## Programming in your language
