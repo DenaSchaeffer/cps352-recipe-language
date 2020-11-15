@@ -27,7 +27,8 @@ Instructor: Dr. Phu Phung
 		        ::= (<action> <ingredient> <ingredient>)
 		        ::= cook {<name> using <ingredient>}^+(&) with <ingredient>
 		        ::= taste <ingredient> yummy <ingredient> bummy <ingredient>
-		        ::= recipe <name> contains {<name>}^+(&) { <ingredient> }
+		        ::= recipe {<name>}^+(&) { <ingredient> }
+				::= prepare <name> contains {<ingredient>}^+(&)
 ; fry + | cut - | combine * | split / | more > | less < | ferment ^ 
 <action>        ::= "fry" | "cut" | "combine" | "split" | "more" | "less" | "ferment"  
 <grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number>
@@ -57,11 +58,13 @@ The following explains the correlations between the language we developed and th
 
 ```
 cook noodles using 30 & chicken using 2 with //bind two identifiers with two numbers
-	recipe noodles & chicken contains //two arguments in the function
+	cook soup using recipe noodles & chicken { //two arguments in the function
 		taste //cond
 			fry noodles chicken				
 		yummy //true
 			noodles
 		bummy //false
 			chicken
+	} with 
+	cook meal using prepare soup contains noodles & chicken with (combine soup 5)
 ```
