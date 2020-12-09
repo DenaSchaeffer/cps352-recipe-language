@@ -31,7 +31,7 @@ Instructor: Dr. Phu Phung
 				::= prepare <name> contains {<ingredient>}^+(&)
 ; fry + | cut - | combine * | split / | more > | less < | ferment ^ 
 <action>        ::= "fry" | "cut" | "combine" | "split" | "more" | "less" | "ferment"  
-<grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number>
+<grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number> | <number><number>
 <number>        ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 <name>          ::= [A-Za-z][A-Za-z0-9]*
 ```
