@@ -69,3 +69,14 @@ The following explains the correlations between the language we developed and th
 		cook noodles using 30 & chicken using 2 with //bind two identifiers with two numbers 
 			cook meal using prepare soup contains noodles & chicken with (combine soup 5)
 ```
+
+# Language Implementation and Evaluation
+## Language Implementation
+
+Our language design was implemented through the interpretation method. The Scheme code from Lab 4 was used as a guide for this part of our final project. We went through the following steps to implement our language:
+
+1. Revised the-grammer in sllgen-grammar.rkt to include the new syntax and semantics. This includes the inclusion of an assignement function, conditional statement, function definition, and function call. We also defined the grammar for add, subtract, multiply, divide, less-than, more-than, and power functions.
+2. Revised eval-primapp in myinterpreter.rkt to include implementation of the functions with primitives (add, subtract, multiply, divide, less-than, more-than, power).
+3. Implemented error handling to catch invalid sentences. 
+
+## Evaluation
