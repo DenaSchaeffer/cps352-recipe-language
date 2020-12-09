@@ -12,25 +12,25 @@
 )
 
 (define the-grammar
-  '((program (ingredient) a-program)
-    (ingredient (number) lit-exp)
-    (ingredient (identifier) id-exp)   
-    (ingredient
-      ("(" primitive ingredient ingredient ")")
+  '((program (myexpression) a-program)
+    (myexpression (number) lit-exp)
+    (myexpression (identifier) id-exp)
+    (myexpression
+      ("(" primitive myexpression myexpression ")")
       primapp-exp)
-    (ingredient
-     ("cook" (separated-list identifier "using" ingredient "&")
-            "with" ingredient)
+    (myexpression
+     ("cook" (separated-list identifier "using" myexpression "&")
+            "with" myexpression)
      let-exp)
-    (ingredient
-     ("taste" ingredient "yummy" ingredient "bummy" ingredient)
+    (myexpression
+     ("taste" myexpression "yummy" myexpression "bummy" myexpression)
      if-exp)
-    (ingredient
-     ("recipe" (separated-list identifier "&") "{" ingredient "}")
+    (myexpression
+     ("recipe" (separated-list identifier "&") "{" myexpression "}")
      function-def-exp)
-    (ingredient
-     ("prepare" identifier "contains" (separated-list ingredient "&"))
-     function-call-exp)
+    ;(myexpression
+    ; ("prepare" myexpression "contains" (separated-list myexpression "&"))
+    ; function-call-exp)
     (primitive ("fry")              add-prim)
     (primitive ("cut")         subtract-prim)
     (primitive ("combine")     multiply-prim)
