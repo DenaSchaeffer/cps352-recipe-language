@@ -1,19 +1,16 @@
 #lang eopl
-
 (require "binding.rkt")
-
-(display "CPS352 - Interpreter Implementation with sllgen\nby Quan Nguyen <nguyenq2@udayton.edu>\n")
-
 (require "sllgen-grammar.rkt")
+(display "CPS352 - Final Project Part 2 [Language Implementation]\nby Quan Nguyen <nguyenq2@udayton.edu> & Dena Schaeffer <backd1@udayton.edu>\n")
 
 (define eval-program
   (lambda (prog-ast)
-       (cases program prog-ast
-         (a-program (expr)
-                    (eval-expression expr (empty-env))
-                    )
-         )
+    (cases program prog-ast
+      (a-program (expr)
+                 (eval-expression expr (empty-env))
+                 )
       )
+    )
   )
 
 (define eval-expression
@@ -23,6 +20,9 @@
       (id-exp (id) 
               (value-of id env)
               )
+      (primapp-exp (prim expr1 expr2)   
+                   (eval-primapp prim expr1 expr2 env)       
+                   )
       (let-exp (id-list exp-list in-exp)
                (let* ((values-list(map (lambda (exp) (eval-expression exp env)) exp-list))
                       (local-env(binding id-list values-list env)))
@@ -35,9 +35,6 @@
                   (eval-expression else-exp env)
                   )
               )
-      (primapp-exp (prim expr1 expr2)   
-            (eval-primapp prim expr1 expr2 env)       
-            )
       (function-def-exp (id-list func-body)
                         ; (eopl:printf "DEBUG>id-list=~s\n func-body=~s\n" id-list func-body)
                         (function-closure id-list func-body env))
@@ -67,7 +64,7 @@
                         ))))
 
 (define true?
-  (lambda (x) (not (zero? x)))
+  (lambda (x) x)
   )
 
 (define eval-primapp
@@ -75,11 +72,23 @@
     (cases primitive prim
       (add-prim ()
                 (+ (eval-expression expr1 env) (eval-expression expr2 env))
-       )
+                )
       (subtract-prim ()
-                (- (eval-expression expr1 env) (eval-expression expr2 env))
-       )
-
+                     (- (eval-expression expr1 env) (eval-expression expr2 env))
+                     )
+      (multiply-prim ()
+                     (* (eval-expression expr1 env) (eval-expression expr2 env)))
+      (divide-prim ()
+                   (/ (eval-expression expr1 env) (eval-expression expr2 env)))
+      (more-prim ()
+                 (> (eval-expression expr1 env) (eval-expression expr2 env))
+                 )
+      (less-prim ()
+                 (< (eval-expression expr1 env) (eval-expression expr2 env))
+                 )
+      (power-prim ()
+                  (expt (eval-expression expr1 env) (eval-expression expr2 env))
+                  )
       )
     )
   )
@@ -89,15 +98,15 @@
     (let ((syntaxtree (myparser source-program))
           )
       (eval-program syntaxtree)
-     )
+      )
+    )
   )
- )
 
 (define myparser
   (sllgen:make-string-parser the-lexical-spec the-grammar))
 
 (define myinterpreter-REPL
-  (sllgen:make-rep-loop "myinterpreter-nguyenq2> "
+  (sllgen:make-rep-loop "myinterpreter-group13> "
                         (lambda (pgm) (eval-program pgm))
                         (sllgen:make-stream-parser the-lexical-spec the-grammar)))
 (myinterpreter-REPL)

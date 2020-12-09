@@ -33,6 +33,11 @@
      function-call-exp)
     (primitive ("+")     add-prim)
     (primitive ("-")     subtract-prim)
+    (primitive ("*")     multiply-prim)
+    (primitive ("/")     divide-prim)
+    (primitive (">")     more-prim)
+    (primitive ("<")     less-prim)
+    (primitive ("^")     power-prim)
    )
 )
 
