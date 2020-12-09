@@ -29,7 +29,7 @@
      ("recipe" (separated-list identifier "&") "{" ingredient "}")
      function-def-exp)
     (ingredient
-     ("prepare" identifier "contains" (separated-list ingredient "&"))
+     ("prepare" identifier "contains" (separated-list ingredient "&") "")
      function-call-exp)
     (primitive ("fry")              add-prim)
     (primitive ("cut")         subtract-prim)
