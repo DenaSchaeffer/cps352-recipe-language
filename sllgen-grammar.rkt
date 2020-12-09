@@ -14,7 +14,7 @@
 (define the-grammar
   '((program (myexpression) a-program)
     (myexpression (number) lit-exp)
-    (myexpression (identifier) id-exp)
+    (myexpression (identifier) id-exp)   
     (myexpression
       ("(" primitive myexpression myexpression ")")
       primapp-exp)
@@ -28,8 +28,8 @@
     (myexpression
      ("recipe" (separated-list identifier "&") "{" myexpression "}")
      function-def-exp)
-    (ingredient
-     ("prepare" identifier "contains" (separated-list ingredient "&") "")
+    (myexpression
+     ("prepare" identifier "contains" (separated-list myexpression "&") "")
      function-call-exp)
     (primitive ("fry")              add-prim)
     (primitive ("cut")         subtract-prim)
