@@ -48,3 +48,8 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Backup Files
+*.bak
+
+# Complied Files
+compiled/
