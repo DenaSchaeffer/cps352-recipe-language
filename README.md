@@ -27,12 +27,13 @@ Instructor: Dr. Phu Phung
 		        ::= (<action> <ingredient> <ingredient>)
 		        ::= cook {<name> using <ingredient>}^+(&) with <ingredient>
 		        ::= taste <ingredient> yummy <ingredient> bummy <ingredient>
-		        ::= recipe {<name>}^+(&) { <ingredient> }
-				::= prepare <name> contains {<ingredient>}^+(&)
+		        ::= recipe {<name>}^+(&) mix <ingredient> stop
+				::= prepare <name> contains {<ingredient>}^+(&) stop
 ; fry + | cut - | combine * | split / | more > | less < | ferment ^ 
 <action>        ::= "fry" | "cut" | "combine" | "split" | "more" | "less" | "ferment"  
-<grams>         ::= <number> | -<number> | <number>.<number> | -<number>.<number> | <number><number>
-<number>        ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+<grams>         ::= [sign]<digit> | [sign]<digit>.<digit>
+<sign>			::= + | -
+<digit>        	::= [0-9]+
 <name>          ::= [A-Za-z][A-Za-z0-9]*
 ```
 ## Language Description

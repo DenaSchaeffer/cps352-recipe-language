@@ -4,10 +4,8 @@
 (define the-lexical-spec
   '((whitespace (whitespace) skip)
     (comment (";" (arbno (not #\newline))) skip)
-    (identifier
-      (letter (arbno (or letter digit "_" "-" "?")))
-      symbol)
-    (number ((or "" "-" "+") digit (arbno digit)) number)
+    (identifier (letter (arbno (or letter digit "_" "-" "?"))) symbol)
+    (number ((or "" "-" "+") (arbno digit) (or "." "") (arbno digit)) number)
    )
 )
 
@@ -26,10 +24,10 @@
      ("taste" myexpression "yummy" myexpression "bummy" myexpression)
      if-exp)
     (myexpression
-     ("recipe" (separated-list identifier "&") "{" myexpression "}")
+     ("recipe" (separated-list identifier "&") "mix" myexpression "stop")
      function-def-exp)
     (myexpression
-     ("prepare" identifier "contains" (separated-list myexpression "&") "")
+     ("prepare" myexpression "contains" (separated-list myexpression "&") "stop")
      function-call-exp)
     (primitive ("fry")              add-prim)
     (primitive ("cut")         subtract-prim)
