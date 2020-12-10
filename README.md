@@ -77,7 +77,122 @@ The following explains the correlations between the language we developed and th
 Our language design was implemented through the interpretation method. The Scheme code from Lab 4 was used as a guide for this part of our final project. We went through the following steps to implement our language:
 
 1. Revised the-grammer in sllgen-grammar.rkt to include the new syntax and semantics. This includes the inclusion of an assignement function, conditional statement, function definition, and function call. We also defined the grammar for add, subtract, multiply, divide, less-than, more-than, and power functions.
+```
+(define the-grammar
+  '((program (myexpression) a-program)
+    (myexpression (number) lit-exp)
+    (myexpression (identifier) id-exp)   
+    (myexpression
+      ("(" primitive myexpression myexpression ")")
+      primapp-exp)
+    (myexpression
+     ("cook" (separated-list identifier "using" myexpression "&")
+            "with" myexpression)
+     let-exp)
+    (myexpression
+     ("taste" myexpression "yummy" myexpression "bummy" myexpression)
+     if-exp)
+    (myexpression
+     ("recipe" (separated-list identifier "&") "mix" myexpression "stop")
+     function-def-exp)
+    (myexpression
+     ("prepare" myexpression "contains" (separated-list myexpression "&") "stop")
+     function-call-exp)
+    (primitive ("fry")              add-prim)
+    (primitive ("cut")         subtract-prim)
+    (primitive ("combine")     multiply-prim)
+    (primitive ("split")         divide-prim)
+    (primitive ("less")            less-prim)
+    (primitive ("more")            more-prim)
+    (primitive ("ferment")        power-prim)
+   )
+)
+```
 2. Revised eval-primapp in myinterpreter.rkt to include implementation of the functions with primitives (add, subtract, multiply, divide, less-than, more-than, power).
+```
+(define eval-primapp
+  (lambda (prim expr1 expr2 env)
+    (cases primitive prim
+      (add-prim ()
+                (+ (eval-expression expr1 env) (eval-expression expr2 env))
+                )
+      (subtract-prim ()
+                     (- (eval-expression expr1 env) (eval-expression expr2 env))
+                     )
+      (multiply-prim ()
+                     (* (eval-expression expr1 env) (eval-expression expr2 env)))
+      (divide-prim ()
+                   (/ (eval-expression expr1 env) (eval-expression expr2 env)))
+      (more-prim ()
+                 (> (eval-expression expr1 env) (eval-expression expr2 env))
+                 )
+      (less-prim ()
+                 (< (eval-expression expr1 env) (eval-expression expr2 env))
+                 )
+      (power-prim ()
+                  (expt (eval-expression expr1 env) (eval-expression expr2 env))
+                  )
+      )
+    )
+  )
+```
 3. Implemented error handling to catch invalid sentences. 
-
+```
+add here when done
+```
 ## Evaluation
+
+#### Fry
+```
+screenshot placeholder
+```
+#### Cut
+```
+screenshot placeholder
+```
+#### Combine
+```
+screenshot placeholder
+```
+#### Split
+```
+screenshot placeholder
+```
+#### More
+```
+screenshot placeholder
+```
+#### Less
+```
+screenshot placeholder
+```
+#### Ferment
+```
+screenshot placeholder
+```
+#### Cook
+```
+screenshot placeholder
+```
+#### Taste Test
+```
+screenshot placeholder
+```
+#### Recipe
+```
+screenshot placeholder
+```
+#### Prepare
+```
+screenshot placeholder
+```
+
+### Program with Function Definition & Application:
+```
+insert here w/ screeenshot
+```
+
+### Invalid Syntax Examples
+1. insert here
+2. insert here
+3. insert here
