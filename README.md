@@ -136,6 +136,8 @@ Our language design was implemented through the interpretation method. The Schem
 ```
       ... (eopl:error 'eval-expression "Cannot execute a non-function: ~s\n" func-exp)))
       ... (else (eopl:error 'eval-expression "Unknown primitive: ~s" prim))
+      ... (eopl:error 'value-of "No binding for ~s" sym))
+
                              
 ```
 ## Evaluation
@@ -194,4 +196,4 @@ Our language design was implemented through the interpretation method. The Schem
 ![second](https://i.gyazo.com/811e32e120b7e5236552a8125ff8fa8c.png)
 
 #### 3
-![third]()
+![third](https://i.gyazo.com/0451c9bf7d64c494d3f31af3401668e4.png)
