@@ -62,8 +62,13 @@ The following explains the correlations between the language we developed and th
 
 ```
     cook soup using recipe a & b 
-         mix (fry a b) stop 
-         with prepare soup contains 1 & 2 stop
+    mix taste (fry a b) 
+          yummy 60 
+          bummy 40 
+          stop 
+    with prepare soup contains 1 & 2 
+    stop
+
 ```
 
 # Language Implementation and Evaluation
@@ -185,7 +190,7 @@ Our language design was implemented through the interpretation method. The Schem
 ![prepare](https://i.gyazo.com/0cf06f0136cebeaf01382c494c6dd343.png)
 
 ### Program with Function Definition & Application:
-![defapp](https://i.gyazo.com/6406488e8640ec8a60fce5ce61499d17.png)
+![defapp](https://i.gyazo.com/d707b8d427a011e43fd411ac4d6ac72d.png)
 
 ### Invalid Syntax Examples
 
