@@ -6,13 +6,14 @@
     (comment (";" (arbno (not #\newline))) skip)
     (identifier (letter (arbno (or letter digit "_" "-" "?"))) symbol)
     (number ((or "" "-" "+") (arbno digit) (or "." "") (arbno digit)) number)
+    (text ((arbno (or letter digit "_" "-" "?" "!"))) string)
    )
 )
 
 (define the-grammar
   '((program (myexpression) a-program)
     (myexpression (number) lit-exp)
-    (myexpression (identifier) id-exp)   
+    (myexpression (identifier) id-exp)
     (myexpression
       ("(" primitive myexpression myexpression ")")
       primapp-exp)
@@ -29,6 +30,7 @@
     (myexpression
      ("prepare" myexpression "contains" (separated-list myexpression "&") "stop")
      function-call-exp)
+    (myexpression ("print" " " (separated-list text " ") ";") print-exp)
     (primitive ("fry")              add-prim)
     (primitive ("cut")         subtract-prim)
     (primitive ("combine")     multiply-prim)

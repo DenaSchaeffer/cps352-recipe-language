@@ -31,12 +31,14 @@ Instructor: Dr. Phu Phung
 		        ::= taste <ingredient> yummy <ingredient> bummy <ingredient>
 		        ::= recipe {<name>}^+(&) mix <ingredient> stop
 				::= prepare <name> contains {<ingredient>}^+(&) stop
+				::= print <text>;
 ; fry + | cut - | combine * | split / | more > | less < | ferment ^ 
 <action>        ::= "fry" | "cut" | "combine" | "split" | "more" | "less" | "ferment"  
 <grams>         ::= [sign]<digit> | [sign]<digit>.<digit>
 <sign>			::= + | -
 <digit>        	::= [0-9]+
 <name>          ::= [A-Za-z][A-Za-z0-9]*
+<text>			::= [A-Za-z0-9\_\-\?\! ]*
 ```
 ## Language Description
 The following explains the correlations between the language we developed and the basic syntax. We wanted to mimic our language like a recipe book, where variables act as ingredients and functions act as what you do with the ingredients.

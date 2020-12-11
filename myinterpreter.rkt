@@ -17,9 +17,7 @@
   (lambda (expr env)
     (cases myexpression expr
       (lit-exp (datum) datum)
-      (id-exp (id) 
-              (value-of id env)
-              )
+      (id-exp (id) (value-of id env))
       (primapp-exp (prim expr1 expr2)
                    ; (eopl:printf "DEBUG>prim=~s\n" prim)
                    (eval-primapp prim expr1 expr2 env)       
@@ -49,10 +47,12 @@
                                (eval-function-call func-closure args-values)
                                (eopl:error 'eval-expression "Cannot execute a non-function: ~s\n" func-exp)))
                          )
+      (print-exp (text) text)
       )
     )
   )
 
+;; Function Call
 (define-datatype function-def function-def?
   (function-closure
    (id-list (list-of symbol?))
@@ -66,6 +66,7 @@
                         (eval-expression func-body (binding id-list argument-values env))
                         ))))
 
+;; If
 (define true?
   (lambda (x)
     (if (boolean? x) x
