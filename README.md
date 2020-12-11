@@ -54,23 +54,16 @@ The following explains the correlations between the language we developed and th
 
 ## Programming in your language
 ### Simple program
-1. `(cut 1 (fry 2 3))`
+1. `(cut 1 (fry -2 3.5))`
 2. `cook fish using 20 & egg using 5 with (fry fish egg)`
 3. `taste 1 yummy 5 bummy 0`
 
 ### Program with function definition
 
 ```
-	cook soup using recipe ingredient1 & ingredient2 { //two arguments in the function
-		taste //cond
-			more ingredient1 ingredient2				
-		yummy //true
-			ingredient1
-		bummy //false
-			ingredient2
-	} with 
-		cook noodles using 30 & chicken using 2 with //bind two identifiers with two numbers 
-			cook meal using prepare soup contains noodles & chicken with (combine soup 5)
+    cook soup using recipe a & b 
+         mix (fry a b) stop 
+         with prepare soup contains 1 & 2 stop
 ```
 
 # Language Implementation and Evaluation
@@ -134,15 +127,27 @@ Our language design was implemented through the interpretation method. The Schem
       (power-prim ()
                   (expt (eval-expression expr1 env) (eval-expression expr2 env))
                   )
+      (else (eopl:error 'eval-expression "Unknown primitive: ~s" prim))
       )
     )
   )
 ```
 3. Implemented error handling to catch invalid sentences. 
 ```
-add here when done
+      ... (eopl:error 'eval-expression "Cannot execute a non-function: ~s\n" func-exp)))
+      ... (else (eopl:error 'eval-expression "Unknown primitive: ~s" prim))
+                             
 ```
 ## Evaluation
+
+### Three simple programs
+![one](https://i.gyazo.com/ac0a51c9b3ec79cdcf565afba1ba7453.png)
+
+![two](https://i.gyazo.com/59c121f444dd47ec6c8467f57aca1169.png)
+
+![three](https://i.gyazo.com/8c93a0c7a503ff32f1fd70364a871252.png)
+
+### Additional Examples
 
 #### Fry
 ![fry](https://trello-attachments.s3.amazonaws.com/5fd2f23f77e1a36d935ad78b/850x134/7b60eb10036a0765e41a523f1f4267bd/6f569903fc3ffe219fe6216cab0a70b5.png)
@@ -178,7 +183,7 @@ add here when done
 ![prepare](https://i.gyazo.com/0cf06f0136cebeaf01382c494c6dd343.png)
 
 ### Program with Function Definition & Application:
-![defapp]()
+![defapp](https://i.gyazo.com/6406488e8640ec8a60fce5ce61499d17.png)
 
 ### Invalid Syntax Examples
 
@@ -186,7 +191,7 @@ add here when done
 ![first](https://i.gyazo.com/613601d131ac802edfdf58e68ad8d89d.png)
 
 #### 2
-![second]()
+![second](https://i.gyazo.com/811e32e120b7e5236552a8125ff8fa8c.png)
 
 #### 3
 ![third]()
