@@ -172,10 +172,10 @@ add here when done
 ![taste](https://trello-attachments.s3.amazonaws.com/5fd2f4d83982fd7c5dd95e23/869x180/c74adca2ee4f7ccf93d0c526e5303bd7/image.png)
 
 #### Recipe
-![recipe]()
+![recipe](https://i.gyazo.com/4b5594039e7ad012962c7acb6b730237.png)
 
 #### Prepare
-![prepare]()
+![prepare](https://i.gyazo.com/0cf06f0136cebeaf01382c494c6dd343.png)
 
 ### Program with Function Definition & Application:
 ![defapp]()
