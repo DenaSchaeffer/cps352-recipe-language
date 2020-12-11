@@ -18,7 +18,7 @@
       primapp-exp)
     (myexpression
      ("cook" (separated-list identifier "using" myexpression "&")
-            "with" myexpression)
+             "with" myexpression)
      let-exp)
     (myexpression
      ("taste" myexpression "yummy" myexpression "bummy" myexpression)
