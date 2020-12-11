@@ -78,18 +78,18 @@ The following explains the correlations between the language we developed and th
 
 Our language design was implemented through the interpretation method. The Scheme code from Lab 4 was used as a guide for this part of our final project. We went through the following steps to implement our language:
 
-1. Revised the-grammer in sllgen-grammar.rkt to include the new syntax and semantics. This includes the inclusion of an assignement function, conditional statement, function definition, and function call. We also defined the grammar for add, subtract, multiply, divide, less-than, more-than, and power functions.
+1. Revised the-grammer in sllgen-grammar.rkt to include the new syntax and semantics. This includes the inclusion of an assignement function, conditional statement, function definition, printing, and function call. We also defined the grammar for add, subtract, multiply, divide, less-than, more-than, and power functions.
 ```
 (define the-grammar
   '((program (myexpression) a-program)
     (myexpression (number) lit-exp)
-    (myexpression (identifier) id-exp)   
+    (myexpression (identifier) id-exp)
     (myexpression
       ("(" primitive myexpression myexpression ")")
       primapp-exp)
     (myexpression
      ("cook" (separated-list identifier "using" myexpression "&")
-            "with" myexpression)
+             "with" myexpression)
      let-exp)
     (myexpression
      ("taste" myexpression "yummy" myexpression "bummy" myexpression)
@@ -100,6 +100,7 @@ Our language design was implemented through the interpretation method. The Schem
     (myexpression
      ("prepare" myexpression "contains" (separated-list myexpression "&") "stop")
      function-call-exp)
+    (myexpression ("print" " " (separated-list text " ") ";") print-exp)
     (primitive ("fry")              add-prim)
     (primitive ("cut")         subtract-prim)
     (primitive ("combine")     multiply-prim)
@@ -144,6 +145,7 @@ Our language design was implemented through the interpretation method. The Schem
       ... (eopl:error 'eval-expression "Cannot execute a non-function: ~s\n" func-exp)))
       ... (else (eopl:error 'eval-expression "Unknown primitive: ~s" prim))
       ... (eopl:error 'value-of "No binding for ~s" sym))
+      ... (eopl:error 'eval-expression "Must be a number or a boolean cond-exp=~s\n" x)
 
                              
 ```
@@ -193,6 +195,9 @@ Our language design was implemented through the interpretation method. The Schem
 
 ### Program with Function Definition & Application:
 ![defapp](https://i.gyazo.com/d707b8d427a011e43fd411ac4d6ac72d.png)
+
+### Concept: Printing
+![printing](https://i.gyazo.com/143ef2bf8e7718fc6cfa90073cdbc5a8.png)
 
 ### Invalid Syntax Examples
 
