@@ -1,4 +1,4 @@
-# Team Project #
+# Team 13 Final Project #
 
 ![logo](https://trello-attachments.s3.amazonaws.com/5fd2f0e0a869473863e42f5d/500x500/aef05f83a3734cf1d955147dcfe10cba/cooking.png)
 
@@ -111,7 +111,18 @@ Our language design was implemented through the interpretation method. The Schem
    )
 )
 ```
-2. Revised eval-primapp in myinterpreter.rkt to include implementation of the functions with primitives (add, subtract, multiply, divide, less-than, more-than, power).
+2. Added implemetation for floats and printing in sllgen-grammar.rkt
+```
+(define the-lexical-spec
+  '((whitespace (whitespace) skip)
+    (comment (";" (arbno (not #\newline))) skip)
+    (identifier (letter (arbno (or letter digit "_" "-" "?"))) symbol)
+    (number ((or "" "-" "+") (arbno digit) (or "." "") (arbno digit)) number)
+    (text ((arbno (or letter digit "_" "-" "?" "!"))) string)
+   )
+)
+```
+3. Revised eval-primapp in myinterpreter.rkt to include implementation of the functions with primitives (add, subtract, multiply, divide, less-than, more-than, power).
 ```
 (define eval-primapp
   (lambda (prim expr1 expr2 env)
@@ -140,7 +151,7 @@ Our language design was implemented through the interpretation method. The Schem
     )
   )
 ```
-3. Implemented error handling to catch invalid sentences. 
+4. Implemented error handling to catch invalid sentences. 
 ```
       ... (eopl:error 'eval-expression "Cannot execute a non-function: ~s\n" func-exp)))
       ... (else (eopl:error 'eval-expression "Unknown primitive: ~s" prim))
@@ -184,7 +195,7 @@ Our language design was implemented through the interpretation method. The Schem
 #### Cook
 ![cook](https://i.gyazo.com/59c121f444dd47ec6c8467f57aca1169.png)
 
-#### Taste Test
+#### Taste
 ![taste](https://trello-attachments.s3.amazonaws.com/5fd2f4d83982fd7c5dd95e23/869x180/c74adca2ee4f7ccf93d0c526e5303bd7/image.png)
 
 #### Recipe
@@ -197,7 +208,7 @@ Our language design was implemented through the interpretation method. The Schem
 ![defapp](https://i.gyazo.com/d707b8d427a011e43fd411ac4d6ac72d.png)
 
 ### Concept: Printing
-![printing](https://i.gyazo.com/143ef2bf8e7718fc6cfa90073cdbc5a8.png)
+![printing](https://i.gyazo.com/1677af7f91d07b0ab854f54588a30d94.png)
 
 ### Invalid Syntax Examples
 
